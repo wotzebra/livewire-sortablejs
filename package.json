@@ -1,0 +1,15 @@
+{
+  "name": "livewire-sortablejs",
+  "version": "0.1.0",
+  "description": "Laravel Livewire plugin to use Sortable.js",
+  "main": "src/index.js",
+  "devDependencies": {
+    "esbuild": "^0.12.20",
+    "sortablejs": "^1.14.0"
+  },
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --minify --sourcemap --outfile=dist/livewire-sortable.js"
+  },
+  "author": "Günther Debrauwer",
+  "license": "MIT"
+}
