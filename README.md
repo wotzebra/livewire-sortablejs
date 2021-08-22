@@ -15,17 +15,17 @@ The `livewire-sortable` package uses Shopify's sortable package. We noticed some
 ### NPM
 
 ```bash
-npm install livewire-sortablejs --save-dev
+npm install @nextapps-be/livewire-sortablejs --save-dev
 ```
 
 Import the package in your bundle:
 
 ```js
-import 'livewire-sortablejs';
+import '@nextapps-be/livewire-sortablejs';
 
 // or
 
-require('livewire-sortablejs');
+require('@nextapps-be/livewire-sortablejs');
 ```
 
 ## Usage
