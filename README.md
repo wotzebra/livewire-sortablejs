@@ -12,6 +12,12 @@ The `livewire-sortable` package uses Shopify's sortable package. We noticed some
 
 ## Installation
 
+### CDN
+
+```html
+<script src="https://unpkg.com/@nextapps-be/livewire-sortablejs@0.1.1/dist/livewire-sortable.js"></script>
+```
+
 ### NPM
 
 ```bash
