@@ -2,7 +2,7 @@
 
 A plugin/wrapper around [Sortable.js](https://github.com/SortableJS/Sortable) package.
 
-## Why use this package instead of Livewire's official [livewire-sortable](https://github.com/livewire/sortable) package?
+## Why use this instead of Livewire's official [livewire-sortable](https://github.com/livewire/sortable) package?
 
 The `livewire-sortable` package uses Shopify's sortable package. We noticed some issues with that package compared to Sortable.js:
 - Shopify's sortable package does not retain an item's original height and width while dragging. Sortable.js does this by default.
