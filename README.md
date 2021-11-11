@@ -1,5 +1,9 @@
 # Livewire Sortable.js
 
+[![Latest Version on NPM](https://img.shields.io/npm/v/@nextapps-be%2Flivewire-sortablejs.svg?style=flat-square)](https://npmjs.com/package/@nextapps-be%2Flivewire-sortablejs)
+[![NPM total downloads](https://img.shields.io/npm/dt/@nextapps-be%2Flivewire-sortablejs.svg?style=flat-square)](https://www.npmjs.com/package/@nextapps-be%2Flivewire-sortablejs)
+[![NPM downloads per month](https://img.shields.io/npm/dm/@nextapps-be%2Flivewire-sortablejs.svg?style=flat-square)](https://www.npmjs.com/package/@nextapps-be%2Flivewire-sortablejs)
+
 A plugin/wrapper around [Sortable.js](https://github.com/SortableJS/Sortable) package.
 
 ## Why use this instead of Livewire's official [livewire-sortable](https://github.com/livewire/sortable) package?
