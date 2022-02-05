@@ -71,23 +71,23 @@ When the order is updated, you will receive the following array structure in you
 
 ### Multiple groups with draggable items
 
-When you have multiple lists, each with items that can be moved between those different lists (e.g. Trello), you have to add the following attributes to your html:
-- `wire:sortable-group="methodName"`: This attribute should be added to the html element that encapsulates all lists with. The value of this attribute is the Livewire method that will be executed when an item has been dragged.
+When you have multiple lists, each with items that can be moved between those different lists, you have to add the following attributes to your html:
+- `wire:sortable-group="methodName"`: This attribute should be added to the html element that encapsulates all lists. The value of this attribute is the Livewire method that will be executed when an item has been dragged.
 - `wire:sortable-group.item-group="groupIdentifier"`: This atttribute should be added to the root element of a list with draggable items. The value of this attribute will be used to inform you about the updated order.
 - `wire:sortable-group.item="itemIdentifier"`: This atttribute should be added to each individual draggable item in each list. The value of this attribute will be used to inform you about the updated order.
-- `wire:sortable.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag an item by dragging this html element. If you do not provide it, then the complete item will draggable.
+- `wire:sortable-group.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag an item by dragging this html element. If you do not provide it, then the complete item will draggable.
 
 ```blade
 <div wire:sortable-group="updateTaskOrder" style="display: flex">
     @foreach ($groups as $group)
-        <div wire:sortable.item="{{ $group->id }}" wire:key="group-{{ $group->id }}">
+        <div wire:key="group-{{ $group->id }}">
             <h4>{{ $group->label }}</h4>
 
             <ul wire:sortable-group.item-group="{{ $group->id }}">
                 @foreach ($group->tasks()->orderBy('order')->get() as $task)
                     <li wire:sortable-group.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
                         <span>{{ $task->title }}</span>
-                        <button wire:sortable.handle>drag</button>
+                        <button wire:sortable-group.handle>drag</button>
                     </li>
                 @endforeach
             </ul>
@@ -96,7 +96,7 @@ When you have multiple lists, each with items that can be moved between those di
 </div>
 ```
 
-When the order is updated, you will receive the following array structure in your Livewire method:
+When an item is dragged, you will receive the following array structure in the Livewire method you provided to the `wire:sortable-group` directive (in this example, the `updateTaskOrder` method):
 
 ```php
 [
@@ -109,6 +109,66 @@ When the order is updated, you will receive the following array structure in you
                 'value' => 50,   // item id
             ]
         ]
+    ]
+]
+```
+
+### Multiple draggable groups with draggable items
+
+When you have multiple lists, each with items that can be moved between those different lists and the lists themselves also need to be draggable, you have to add the following attributes to your html:
+- `wire:sortable="methodName"`: This attribute should be added to the html element that encapsulates all draggable groups. The value of this attribute is the Livewire method that will be executed when a group has been dragged.
+- `wire:sortable.item="groupIdentifier"`: This atttribute should be added to each individual draggable group. The value of this attribute will be used to inform you about the updated group order.
+- `wire:sortable.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag a group by dragging this html element. If you do not provide it, then the complete group will draggable.
+
+- `wire:sortable-group="methodName"`: This attribute should be added to the html element that encapsulates all lists. The value of this attribute is the Livewire method that will be executed when an item has been dragged.
+- `wire:sortable-group.item-group="groupIdentifier"`: This atttribute should be added to the root element of a list with draggable items. The value of this attribute will be used to inform you about the updated order.
+- `wire:sortable-group.item="itemIdentifier"`: This atttribute should be added to each individual draggable item in each list. The value of this attribute will be used to inform you about the updated order.
+- `wire:sortable-group.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag an item by dragging this html element. If you do not provide it, then the complete item will draggable.
+
+```blade
+<div wire:sortable="updateGroupOrder" wire:sortable-group="updateTaskOrder" style="display: flex">
+    @foreach ($groups as $group)
+        <div wire:sortable.item="{{ $group->id }}" wire:key="group-{{ $group->id }}">
+            <h4>{{ $group->label }}</h4>
+            <button wire:sortable.handle>drag group</button>
+
+            <ul wire:sortable-group.item-group="{{ $group->id }}">
+                @foreach ($group->tasks()->orderBy('order')->get() as $task)
+                    <li wire:sortable-group.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
+                        <span>{{ $task->title }}</span>
+                        <button wire:sortable.handle>drag item</button>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endforeach
+</div>
+```
+
+When an item is dragged, you will receive the following array structure in the Livewire method you provided to the `wire:sortable-group` directive (in this example, the `updateTaskOrder` method):
+
+```php
+[
+    [
+        'order' => 1,            // order of group (starts at 1, not 0)
+        'value' => 20,           // group id
+        'items' => [
+            [
+                'order' => 1,    // order of item within group (starts at 1, not 0)
+                'value' => 50,   // item id
+            ]
+        ]
+    ]
+]
+```
+
+When a group is dragged, you will receive the following array structure in the Livewire method you provided to the `wire:sortable` directive (in this example, the `updateGroupOrder` method):
+
+```php
+[
+    [
+        'order' => 1,            // order of group (starts at 1, not 0)
+        'value' => 20,           // group id
     ]
 ]
 ```
