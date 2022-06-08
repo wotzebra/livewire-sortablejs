@@ -12,7 +12,14 @@ window.Livewire.directive('sortable', (el, directive, component) => {
         return;
     }
 
+    let options = {};
+
+    if (el.hasAttribute('wire:sortable.options')) {
+        options = JSON.parse(el.getAttribute('wire:sortable.options'))
+    }
+
     el.livewire_sortable = window.Sortable.create(el, {
+        ...options,
         draggable: '[wire\\:sortable\\.item]',
         handle: el.querySelector('[wire\\:sortable\\.handle]') ? '[wire\\:sortable\\.handle]' : null,
         sort: true,
@@ -43,7 +50,14 @@ window.Livewire.directive('sortable-group', (el, directive, component) => {
         return;
     }
 
+    let options = {};
+
+    if (el.hasAttribute('wire:sortable-group.options')) {
+        options = JSON.parse(el.getAttribute('wire:sortable-group.options'))
+    }
+
     el.livewire_sortable = window.Sortable.create(el, {
+        ...options,
         draggable: '[wire\\:sortable-group\\.item]',
         handle: el.querySelector('[wire\\:sortable-group\\.handle]') ? '[wire\\:sortable-group\\.handle]' : null,
         sort: true,
@@ -68,7 +82,6 @@ window.Livewire.directive('sortable-group', (el, directive, component) => {
                     }),
                 };
             });
-
             component.call(masterEl.getAttribute('wire:sortable-group'), groups);
         },
     });

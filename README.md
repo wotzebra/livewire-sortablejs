@@ -173,6 +173,15 @@ When a group is dragged, you will receive the following array structure in the L
 ]
 ```
 
+### Using Sortable.js Options
+
+When you want to use more [options of SortableJS](https://github.com/SortableJS/Sortable#options), you have to add the following attributes to your html:
+
+- `wire:sortable.options='{"animation": 100}'`: This attribute should be added to the html element which has attribute `wire:sortable="updateGroupOrder"`.
+- `wire:sortable-group.options='{"animation": 100}'`: This attribute should be added to the html element which has attribute `wire:sortable-group.item-group="`.
+
+Attribute value is in ***json*** format.
+
 ## Building
 
 ```bash
