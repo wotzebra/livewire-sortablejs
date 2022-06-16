@@ -44,11 +44,12 @@ require('@nextapps-be/livewire-sortablejs');
 
 When you only have one list of draggable items (e.g. to-do list), you have to add the following attributes to your html:
 - `wire:sortable="methodName"`: This attribute should be added to the html element that encapsulates all draggable items. The value of this attribute is the Livewire method that will be executed when an item has been dragged.
+- `wire:sortable.options`: This optional attribute can be added to the html element that has the `wire:sortable` attribute. With the different [options](https://github.com/SortableJS/Sortable#options) of Sortable.js, you can use this attribute to customize how the items are dragged and sorted.
 - `wire:sortable.item="itemIdentifier"`: This atttribute should be added to each individual draggable item. The value of this attribute will be used to inform you about the updated order.
 - `wire:sortable.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag an item by dragging this html element. If you do not provide it, then the complete item will draggable.
 
 ```blade
-<ul wire:sortable="updateTaskOrder">
+<ul wire:sortable="updateTaskOrder" wire:sortable.options="{ animation: 100 }">
     @foreach ($tasks as $task)
         <li wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
             <h4>{{ $task->title }}</h4>
@@ -74,16 +75,17 @@ When the order is updated, you will receive the following array structure in you
 When you have multiple lists, each with items that can be moved between those different lists, you have to add the following attributes to your html:
 - `wire:sortable-group="methodName"`: This attribute should be added to the html element that encapsulates all lists. The value of this attribute is the Livewire method that will be executed when an item has been dragged.
 - `wire:sortable-group.item-group="groupIdentifier"`: This atttribute should be added to the root element of a list with draggable items. The value of this attribute will be used to inform you about the updated order.
+- `wire:sortable-group.options`: This optional attribute can be added to every html element that has the `wire:sortable-group.item-group` attribute. With the different [options](https://github.com/SortableJS/Sortable#options) of Sortable.js, you can use this attribute to customize how the items are dragged and sorted.
 - `wire:sortable-group.item="itemIdentifier"`: This atttribute should be added to each individual draggable item in each list. The value of this attribute will be used to inform you about the updated order.
 - `wire:sortable-group.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag an item by dragging this html element. If you do not provide it, then the complete item will draggable.
 
 ```blade
-<div wire:sortable-group="updateTaskOrder" style="display: flex">
+<div wire:sortable-group="updateTaskOrder">
     @foreach ($groups as $group)
         <div wire:key="group-{{ $group->id }}">
             <h4>{{ $group->label }}</h4>
 
-            <ul wire:sortable-group.item-group="{{ $group->id }}">
+            <ul wire:sortable-group.item-group="{{ $group->id }}" wire:sortable-group.options="{ animation: 100 }">
                 @foreach ($group->tasks()->orderBy('order')->get() as $task)
                     <li wire:sortable-group.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
                         <span>{{ $task->title }}</span>
@@ -117,22 +119,24 @@ When an item is dragged, you will receive the following array structure in the L
 
 When you have multiple lists, each with items that can be moved between those different lists and the lists themselves also need to be draggable, you have to add the following attributes to your html:
 - `wire:sortable="methodName"`: This attribute should be added to the html element that encapsulates all draggable groups. The value of this attribute is the Livewire method that will be executed when a group has been dragged.
+- `wire:sortable.options`: This optional attribute can be added to the html element that has the `wire:sortable` attribute. With the different [options](https://github.com/SortableJS/Sortable#options) of Sortable.js, you can use this attribute to customize how the groups are dragged and sorted.
 - `wire:sortable.item="groupIdentifier"`: This atttribute should be added to each individual draggable group. The value of this attribute will be used to inform you about the updated group order.
 - `wire:sortable.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag a group by dragging this html element. If you do not provide it, then the complete group will draggable.
 
 - `wire:sortable-group="methodName"`: This attribute should be added to the html element that encapsulates all lists. The value of this attribute is the Livewire method that will be executed when an item has been dragged.
 - `wire:sortable-group.item-group="groupIdentifier"`: This atttribute should be added to the root element of a list with draggable items. The value of this attribute will be used to inform you about the updated order.
+- `wire:sortable-group.options`: This optional attribute can be added to every html element that has the `wire:sortable-group.item-group` attribute. With the different [options](https://github.com/SortableJS/Sortable#options) of Sortable.js, you can use this attribute to customize how the items are dragged and sorted.
 - `wire:sortable-group.item="itemIdentifier"`: This atttribute should be added to each individual draggable item in each list. The value of this attribute will be used to inform you about the updated order.
 - `wire:sortable-group.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag an item by dragging this html element. If you do not provide it, then the complete item will draggable.
 
 ```blade
-<div wire:sortable="updateGroupOrder" wire:sortable-group="updateTaskOrder" style="display: flex">
+<div wire:sortable="updateGroupOrder" wire:sortable-group="updateTaskOrder" wire:sortable.options="{ animation: 50 }"
     @foreach ($groups as $group)
         <div wire:sortable.item="{{ $group->id }}" wire:key="group-{{ $group->id }}">
             <h4>{{ $group->label }}</h4>
             <button wire:sortable.handle>drag group</button>
 
-            <ul wire:sortable-group.item-group="{{ $group->id }}">
+            <ul wire:sortable-group.item-group="{{ $group->id }}" wire:sortable-group.options="{ animation: 100 }">
                 @foreach ($group->tasks()->orderBy('order')->get() as $task)
                     <li wire:sortable-group.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
                         <span>{{ $task->title }}</span>
@@ -172,15 +176,6 @@ When a group is dragged, you will receive the following array structure in the L
     ]
 ]
 ```
-
-### Using Sortable.js Options
-
-When you want to use more [options of SortableJS](https://github.com/SortableJS/Sortable#options), you have to add the following attributes to your html:
-
-- `wire:sortable.options='{"animation": 100}'`: This attribute should be added to the html element which has attribute `wire:sortable="updateGroupOrder"`.
-- `wire:sortable-group.options='{"animation": 100}'`: This attribute should be added to the html element which has attribute `wire:sortable-group.item-group="`.
-
-Attribute value is in ***json*** format.
 
 ## Building
 
