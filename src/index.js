@@ -82,6 +82,7 @@ window.Livewire.directive('sortable-group', (el, directive, component) => {
                     }),
                 };
             });
+
             component.call(masterEl.getAttribute('wire:sortable-group'), groups);
         },
     });
