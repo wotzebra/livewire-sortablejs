@@ -15,7 +15,7 @@ window.Livewire.directive('sortable', (el, directive, component) => {
     let options = {};
 
     if (el.hasAttribute('wire:sortable.options')) {
-        options = JSON.parse(el.getAttribute('wire:sortable.options'))
+        options = (new Function(`return ${el.getAttribute('wire:sortable.options')};`))();
     }
 
     el.livewire_sortable = window.Sortable.create(el, {
@@ -53,7 +53,7 @@ window.Livewire.directive('sortable-group', (el, directive, component) => {
     let options = {};
 
     if (el.hasAttribute('wire:sortable-group.options')) {
-        options = JSON.parse(el.getAttribute('wire:sortable-group.options'))
+        options = (new Function(`return ${el.getAttribute('wire:sortable-group.options')};`))();
     }
 
     el.livewire_sortable = window.Sortable.create(el, {
