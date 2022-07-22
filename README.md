@@ -140,7 +140,7 @@ When you have multiple lists, each with items that can be moved between those di
                 @foreach ($group->tasks()->orderBy('order')->get() as $task)
                     <li wire:sortable-group.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
                         <span>{{ $task->title }}</span>
-                        <button wire:sortable.handle>drag item</button>
+                        <button wire:sortable-group.handle>drag item</button>
                     </li>
                 @endforeach
             </ul>
