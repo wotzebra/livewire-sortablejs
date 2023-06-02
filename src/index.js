@@ -25,11 +25,13 @@ window.Livewire.directive('sortable', (el, directive, component) => {
         sort: true,
         dataIdAttr: 'wire:sortable.item',
         group: {
+            ...options.group,
             name: el.getAttribute('wire:sortable'),
             pull: false,
             put: false,
         },
         store: {
+            ...options.store,
             set: function (sortable) {
                 let items = sortable.toArray().map((value, index) => {
                     return {
@@ -63,6 +65,7 @@ window.Livewire.directive('sortable-group', (el, directive, component) => {
         sort: true,
         dataIdAttr: 'wire:sortable-group.item',
         group: {
+            ...options.group,
             name: el.closest('[wire\\:sortable-group]').getAttribute('wire:sortable-group'),
             pull: true,
             put: true,
