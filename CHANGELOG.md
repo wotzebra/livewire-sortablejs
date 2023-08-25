@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 0.3.0 - 2023-08-25
+
+- Add support for Livewire v3 (and drop support for Livewire v2)
+
 ## 0.2.1 - 2023-08-25
 
 - Merge nested options provided in `wire:sortable.options` and `wire:sortable-group.options` attributes
