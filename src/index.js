@@ -6,7 +6,7 @@ if (typeof window.Livewire === 'undefined') {
     throw 'Livewire Sortable.js Plugin: window.Livewire is undefined. Make sure @livewireScripts is placed above this script include';
 }
 
-window.Livewire.directive('sortable', (el, directive, component) => {
+window.Livewire.directive('sortable', ({el, directive, component}) => {
     // Only fire this handler on the "root" directive.
     if (directive.modifiers.length > 0) {
         return;
@@ -40,13 +40,13 @@ window.Livewire.directive('sortable', (el, directive, component) => {
                     };
                 });
 
-                component.call(directive.method, items);
+                component.$wire.call(directive.method, items);
             },
         },
     });
 });
 
-window.Livewire.directive('sortable-group', (el, directive, component) => {
+window.Livewire.directive('sortable-group', ({el, directive, component}) => {
     // Only fire this handler on the "root" group directive.
     if (! directive.modifiers.includes('item-group')) {
         return;
@@ -86,7 +86,7 @@ window.Livewire.directive('sortable-group', (el, directive, component) => {
                 };
             });
 
-            component.call(masterEl.getAttribute('wire:sortable-group'), groups);
+            component.$wire.call(masterEl.getAttribute('wire:sortable-group'), groups);
         },
     });
 });
