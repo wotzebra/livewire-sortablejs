@@ -2,11 +2,7 @@ import Sortable from 'sortablejs';
 
 window.Sortable = Sortable;
 
-if (typeof window.Livewire === 'undefined') {
-    throw 'Livewire Sortable.js Plugin: window.Livewire is undefined. Make sure @livewireScripts is placed above this script include';
-}
-
-window.Livewire.directive('sortable', ({el, directive, component}) => {
+window.Livewire?.directive('sortable', ({el, directive, component}) => {
     // Only fire this handler on the "root" directive.
     if (directive.modifiers.length > 0) {
         return;
@@ -46,7 +42,7 @@ window.Livewire.directive('sortable', ({el, directive, component}) => {
     });
 });
 
-window.Livewire.directive('sortable-group', ({el, directive, component}) => {
+window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
     // Only fire this handler on the "root" group directive.
     if (! directive.modifiers.includes('item-group')) {
         return;
