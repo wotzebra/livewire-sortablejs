@@ -179,6 +179,24 @@ When a group is dragged, you will receive the following array structure in the L
 ]
 ```
 
+## MultiDrag Plugin
+Official documentation from Sortable.js https://github.com/SortableJS/Sortable/tree/master/plugins/MultiDrag
+
+To enable the plugin:
+- Add `wire:sortable.multidrag` as the first directive in your blade template before any of the other sortable directives.
+- Add options relevant to the plugin to your `wire:sortable.options` attribute.
+
+```blade
+<ul wire:sortable-multidrag wire:sortable="updateTaskOrder" wire:sortable.options="{ selectedClass: 'chosen', animation: 100 }">
+    @foreach ($tasks as $task)
+        <li wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
+            <h4>{{ $task->title }}</h4>
+            <button wire:sortable.handle>drag</button>
+        </li>
+    @endforeach
+</ul>
+```
+
 ## Building
 
 ```bash

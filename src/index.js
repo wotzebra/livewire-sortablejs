@@ -2,11 +2,13 @@ import { Sortable, MultiDrag } from 'sortablejs';
 
 window.Sortable = Sortable;
 
+let multiDragEnabled = false;
 window.Livewire?.directive('sortable-multidrag', () => {
     window.Sortable.mount(new MultiDrag());
+    multiDragEnabled = true;
 });
 
-window.Livewire?.directive('sortable', ({el, directive, component}) => {
+window.Livewire?.directive('sortable', ({ el, directive, component }) => {
     // Only fire this handler on the "root" directive.
     if (directive.modifiers.length > 0) {
         return;
@@ -24,6 +26,7 @@ window.Livewire?.directive('sortable', ({el, directive, component}) => {
         draggable: '[wire\\:sortable\\.item]',
         handle: el.querySelector('[wire\\:sortable\\.handle]') ? '[wire\\:sortable\\.handle]' : null,
         dataIdAttr: 'wire:sortable.item',
+        multiDrag: multiDragEnabled,
         group: {
             pull: false,
             put: false,
@@ -46,9 +49,9 @@ window.Livewire?.directive('sortable', ({el, directive, component}) => {
     });
 });
 
-window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
+window.Livewire?.directive('sortable-group', ({ el, directive, component }) => {
     // Only fire this handler on the "root" group directive.
-    if (! directive.modifiers.includes('item-group')) {
+    if (!directive.modifiers.includes('item-group')) {
         return;
     }
 
@@ -64,6 +67,7 @@ window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
         draggable: '[wire\\:sortable-group\\.item]',
         handle: el.querySelector('[wire\\:sortable-group\\.handle]') ? '[wire\\:sortable-group\\.handle]' : null,
         dataIdAttr: 'wire:sortable-group.item',
+        multiDrag: multiDragEnabled,
         group: {
             pull: true,
             put: true,
@@ -77,7 +81,7 @@ window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
                 return {
                     order: index + 1,
                     value: el.getAttribute('wire:sortable-group.item-group'),
-                    items:  el.livewire_sortable.toArray().map((value, index) => {
+                    items: el.livewire_sortable.toArray().map((value, index) => {
                         return {
                             order: index + 1,
                             value: value
