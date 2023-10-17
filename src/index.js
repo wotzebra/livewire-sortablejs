@@ -1,6 +1,10 @@
-import Sortable from 'sortablejs';
+import { Sortable, MultiDrag } from 'sortablejs';
 
 window.Sortable = Sortable;
+
+window.Livewire?.directive('sortable-multidrag', () => {
+    window.Sortable.mount(new MultiDrag());
+});
 
 window.Livewire?.directive('sortable', ({el, directive, component}) => {
     // Only fire this handler on the "root" directive.
