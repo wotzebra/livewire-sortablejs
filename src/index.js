@@ -15,10 +15,10 @@ window.Livewire?.directive('sortable', ({el, directive, component}) => {
     }
 
     el.livewire_sortable = window.Sortable.create(el, {
+        sort: true,
         ...options,
         draggable: '[wire\\:sortable\\.item]',
         handle: el.querySelector('[wire\\:sortable\\.handle]') ? '[wire\\:sortable\\.handle]' : null,
-        sort: true,
         dataIdAttr: 'wire:sortable.item',
         group: {
             pull: false,
@@ -55,10 +55,10 @@ window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
     }
 
     el.livewire_sortable = window.Sortable.create(el, {
+        sort: true,
         ...options,
         draggable: '[wire\\:sortable-group\\.item]',
         handle: el.querySelector('[wire\\:sortable-group\\.handle]') ? '[wire\\:sortable-group\\.handle]' : null,
-        sort: true,
         dataIdAttr: 'wire:sortable-group.item',
         group: {
             pull: true,

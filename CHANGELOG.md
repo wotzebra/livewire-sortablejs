@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 0.2.2 - 2023-10-17
+
+- Allow overriding `sort` option via `wire:sortable.options` and `wire:sortable-group.options` attributes
+
 ## 0.3.1 - 2023-09-29
 
 - Do not throw an error when Livewire is not present on the page

@@ -14,7 +14,7 @@
         "sortablejs": "^1.14.0"
     },
     "devDependencies": {
-        "esbuild": "^0.12.20"
+        "esbuild": "^0.19.5"
     },
     "scripts": {
         "build": "esbuild src/index.js --bundle --minify --sourcemap --outfile=dist/livewire-sortable.js"
