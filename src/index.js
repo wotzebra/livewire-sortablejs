@@ -62,7 +62,7 @@ window.Livewire.directive('sortable-group', (el, directive, component) => {
         sort: true,
         ...options,
         draggable: '[wire\\:sortable-group\\.item]',
-        handle: el.querySelector('[wire\\:sortable-group\\.handle]') ? '[wire\\:sortable-group\\.handle]' : null,
+        handle: '[wire\\:sortable-group\\.handle]',
         dataIdAttr: 'wire:sortable-group.item',
         group: {
             pull: true,
