@@ -1,6 +1,6 @@
 {
     "name": "@nextapps-be/livewire-sortablejs",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "Laravel Livewire plugin to use Sortable.js",
     "main": "dist/livewire-sortable.js",
     "author": "Günther Debrauwer",

@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 0.3.4 - 2023-10-18
+
+- Ensure Livewire's morph markers are handled correctly (https://github.com/nextapps-be/livewire-sortablejs/pull/36)
+
 ## 0.3.3 - 2023-10-18
 
 - Ensure `handle` option works when a group does not have any items on initial load (https://github.com/nextapps-be/livewire-sortablejs/pull/35)
