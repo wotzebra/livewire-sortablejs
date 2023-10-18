@@ -2,7 +2,7 @@ import Sortable from 'sortablejs';
 
 window.Sortable = Sortable;
 
-window.Livewire?.directive('sortable', ({el, directive, component}) => {
+window.Livewire?.directive('sortable', ({ el, directive, component }) => {
     // Only fire this handler on the "root" directive.
     if (directive.modifiers.length > 0) {
         return;
@@ -51,7 +51,7 @@ window.Livewire?.directive('sortable', ({el, directive, component}) => {
 
     const currentComponent = component;
 
-    Livewire.hook('message.processed', (message, component) => {
+    Livewire.hook('commit', ({ component, succeed }) => {
         if (component.id !== currentComponent.id) {
             return;
         }
@@ -60,13 +60,17 @@ window.Livewire?.directive('sortable', ({el, directive, component}) => {
             return;
         }
 
-        el.livewire_sortable.option('handle', el.querySelector('[wire\\:sortable\\.handle]') ? '[wire\\:sortable\\.handle]' : null);
+        succeed(() => {
+            queueMicrotask(() => {
+                el.livewire_sortable.option('handle', el.querySelector('[wire\\:sortable\\.handle]') ? '[wire\\:sortable\\.handle]' : null);
 
-        hasSetHandleCorrectly = el.querySelector('[wire\\:sortable\\.item]') !== null;
+                hasSetHandleCorrectly = el.querySelector('[wire\\:sortable\\.item]') !== null;
+            });
+        });
     });
 });
 
-window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
+window.Livewire?.directive('sortable-group', ({ el, directive, component }) => {
     // Only fire this handler on the "root" group directive.
     if (! directive.modifiers.includes('item-group')) {
         return;
