@@ -2,6 +2,14 @@ import Sortable from 'sortablejs';
 
 window.Sortable = Sortable;
 
+const moveEndMorphMarker = (el) => {
+    const endMorphMarker = Array.from(el.childNodes).filter((childNode) => childNode.nodeValue?.trim() === '__ENDBLOCK__')[0];
+
+    if (endMorphMarker) {
+        el.appendChild(endMorphMarker);
+    }
+}
+
 window.Livewire?.directive('sortable', ({ el, directive, component }) => {
     // Only fire this handler on the "root" directive.
     if (directive.modifiers.length > 0) {
@@ -35,6 +43,8 @@ window.Livewire?.directive('sortable', ({ el, directive, component }) => {
                         value: value,
                     };
                 });
+
+                moveEndMorphMarker(el);
 
                 component.$wire.call(directive.method, items);
             },
@@ -98,6 +108,8 @@ window.Livewire?.directive('sortable-group', ({ el, directive, component }) => {
             let masterEl = el.closest('[wire\\:sortable-group]');
 
             let groups = Array.from(masterEl.querySelectorAll('[wire\\:sortable-group\\.item-group]')).map((el, index) => {
+                moveEndMorphMarker(el);
+
                 return {
                     order: index + 1,
                     value: el.getAttribute('wire:sortable-group.item-group'),
