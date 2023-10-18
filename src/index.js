@@ -3,7 +3,9 @@ import Sortable from 'sortablejs';
 window.Sortable = Sortable;
 
 const moveEndMorphMarker = (el) => {
-    const endMorphMarker = Array.from(el.childNodes).filter((childNode) => childNode.nodeValue?.trim() === '__ENDBLOCK__')[0];
+    const endMorphMarker = Array.from(el.childNodes).filter((childNode) => {
+        return childNode.nodeType === 8 && childNode.nodeValue?.trim() === '__ENDBLOCK__';
+    })[0];
 
     if (endMorphMarker) {
         el.appendChild(endMorphMarker);
