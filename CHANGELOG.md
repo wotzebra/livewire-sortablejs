@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 0.2.3 - 2023-10-18
+
+- Ensure `handle` option works when a group does not have any items on initial load.
+
 ## 0.3.2 - 2023-10-17
 
 - Allow overriding `sort` option via `wire:sortable.options` and `wire:sortable-group.options` attributes (https://github.com/nextapps-be/livewire-sortablejs/pull/32)

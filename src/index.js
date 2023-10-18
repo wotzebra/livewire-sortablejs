@@ -40,6 +40,30 @@ window.Livewire?.directive('sortable', ({el, directive, component}) => {
             },
         },
     });
+
+    let hasSetHandleCorrectly = el.querySelector('[wire\\:sortable\\.item]') !== null;
+
+    // If there are already items, then the 'handle' option has already been correctly set.
+    // The option does not have to reevaluated after the next Livewire component update.
+    if (hasSetHandleCorrectly) {
+        return;
+    }
+
+    const currentComponent = component;
+
+    Livewire.hook('message.processed', (message, component) => {
+        if (component.id !== currentComponent.id) {
+            return;
+        }
+
+        if (hasSetHandleCorrectly) {
+            return;
+        }
+
+        el.livewire_sortable.option('handle', el.querySelector('[wire\\:sortable\\.handle]') ? '[wire\\:sortable\\.handle]' : null);
+
+        hasSetHandleCorrectly = el.querySelector('[wire\\:sortable\\.item]') !== null;
+    });
 });
 
 window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
@@ -58,7 +82,7 @@ window.Livewire?.directive('sortable-group', ({el, directive, component}) => {
         sort: true,
         ...options,
         draggable: '[wire\\:sortable-group\\.item]',
-        handle: el.querySelector('[wire\\:sortable-group\\.handle]') ? '[wire\\:sortable-group\\.handle]' : null,
+        handle: '[wire\\:sortable-group\\.handle]',
         dataIdAttr: 'wire:sortable-group.item',
         group: {
             pull: true,
