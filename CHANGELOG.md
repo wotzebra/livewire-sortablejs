@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 0.3.5 - 2023-10-19
+
+- Add support for Livewire's new morph markers (https://github.com/nextapps-be/livewire-sortablejs/pull/37)
+
 ## 0.3.4 - 2023-10-18
 
 - Ensure Livewire's morph markers are handled correctly (https://github.com/nextapps-be/livewire-sortablejs/pull/36)
