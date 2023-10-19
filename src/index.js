@@ -4,7 +4,7 @@ window.Sortable = Sortable;
 
 const moveEndMorphMarker = (el) => {
     const endMorphMarker = Array.from(el.childNodes).filter((childNode) => {
-        return childNode.nodeType === 8 && childNode.nodeValue?.trim() === '__ENDBLOCK__';
+        return childNode.nodeType === 8 && ['[if ENDBLOCK]><![endif]', '__ENDBLOCK__'].includes(childNode.nodeValue?.trim());
     })[0];
 
     if (endMorphMarker) {
