@@ -132,7 +132,7 @@ When you have multiple lists, each with items that can be moved between those di
 - `wire:sortable-group.handle`: This is an optional attribute. If you provide this attribute, then you will only be able to drag an item by dragging this html element. If you do not provide it, then the complete item will draggable.
 
 ```blade
-<div wire:sortable="updateGroupOrder" wire:sortable-group="updateTaskOrder" wire:sortable.options="{ animation: 50 }"
+<div wire:sortable="updateGroupOrder" wire:sortable-group="updateTaskOrder" wire:sortable.options="{ animation: 50 }">
     @foreach ($groups as $group)
         <div wire:sortable.item="{{ $group->id }}" wire:key="group-{{ $group->id }}">
             <h4>{{ $group->label }}</h4>
