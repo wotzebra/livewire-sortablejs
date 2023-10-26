@@ -1,4 +1,4 @@
-import Sortable from 'sortablejs';
+import Sortable from 'sortablejs/modular/sortable.complete.esm.js';
 
 window.Sortable = Sortable;
 
@@ -10,7 +10,15 @@ const moveEndMorphMarker = (el) => {
     if (endMorphMarker) {
         el.appendChild(endMorphMarker);
     }
-}
+};
+
+const triggerSortAfterSpill = (el) => {
+    if (el.srcElement.livewire_sortable.option('revertOnSpill')) {
+        return;
+    }
+
+    el.srcElement.livewire_sortable.option('onSort')();
+};
 
 window.Livewire?.directive('sortable', ({ el, directive, component }) => {
     // Only fire this handler on the "root" directive.
@@ -51,6 +59,7 @@ window.Livewire?.directive('sortable', ({ el, directive, component }) => {
                 component.$wire.call(directive.method, items);
             },
         },
+        onSpill: triggerSortAfterSpill,
     });
 
     let hasSetHandleCorrectly = el.querySelector('[wire\\:sortable\\.item]') !== null;
@@ -130,5 +139,6 @@ window.Livewire?.directive('sortable-group', ({ el, directive, component }) => {
 
             masterEl.closest('[wire\\:id]').__livewire.$wire.call(masterEl.getAttribute('wire:sortable-group'), groups);
         },
+        onSpill: triggerSortAfterSpill,
     });
 });
