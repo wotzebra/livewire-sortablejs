@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 0.4.0 - 2023-10-26
+
+- Always call master element's livewire component when dragging items between groups (as group can be a nested livewire component) (https://github.com/nextapps-be/livewire-sortablejs/pull/44)
+
 ## 0.3.6 - 2023-10-26
 
 - Prevent calling livewire component from both the source and target group after item is dragged (https://github.com/nextapps-be/livewire-sortablejs/pull/40)
