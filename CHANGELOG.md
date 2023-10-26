@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 0.3.6 - 2023-10-26
+
+- Prevent calling livewire component from both the source and target group after item is dragged (https://github.com/nextapps-be/livewire-sortablejs/pull/40)
+
 ## 0.3.5 - 2023-10-19
 
 - Add support for Livewire's new morph markers (https://github.com/nextapps-be/livewire-sortablejs/pull/37)
