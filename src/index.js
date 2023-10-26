@@ -106,7 +106,11 @@ window.Livewire?.directive('sortable-group', ({ el, directive, component }) => {
             ...options.group,
             name: el.closest('[wire\\:sortable-group]').getAttribute('wire:sortable-group'),
         },
-        onSort: () => {
+        onSort: (evt) => {
+            if (evt.to !== evt.from && el === evt.from) {
+                return;
+            }
+
             let masterEl = el.closest('[wire\\:sortable-group]');
 
             let groups = Array.from(masterEl.querySelectorAll('[wire\\:sortable-group\\.item-group]')).map((el, index) => {
