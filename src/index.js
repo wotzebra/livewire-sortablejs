@@ -106,8 +106,8 @@ window.Livewire?.directive('sortable-group', ({ el, directive, component }) => {
             ...options.group,
             name: el.closest('[wire\\:sortable-group]').getAttribute('wire:sortable-group'),
         },
-        onSort: () => {
-            if (el === evt.from) {
+        onSort: (evt) => {
+            if (evt.to !== evt.from && el === evt.from) {
                 return;
             }
 
