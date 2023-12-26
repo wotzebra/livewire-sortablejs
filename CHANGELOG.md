@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 0.4.1 - 2023-12-26
+
+- Update sortablejs from v1.15.0 to v1.15.1 (https://github.com/nextapps-be/livewire-sortablejs/pull/47)
+
 ## 0.4.0 - 2023-10-26
 
 - Always call master element's livewire component when dragging items between groups (as group can be a nested livewire component) (https://github.com/nextapps-be/livewire-sortablejs/pull/44)
