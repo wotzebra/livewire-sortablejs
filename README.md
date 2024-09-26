@@ -19,7 +19,7 @@ The `livewire-sortable` package uses Shopify's sortable package. We noticed some
 ### CDN
 
 ```html
-<script src="https://unpkg.com/@wotz/livewire-sortablejs@0.4.0/dist/livewire-sortable.js"></script>
+<script src="https://unpkg.com/@wotz/livewire-sortablejs@1.0.0/dist/livewire-sortable.js"></script>
 ```
 
 > If you use Livewire v2, you need to use v0.2.
