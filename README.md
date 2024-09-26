@@ -1,8 +1,8 @@
 # Livewire Sortable.js
 
-[![Latest Version on NPM](https://img.shields.io/npm/v/@nextapps-be%2Flivewire-sortablejs.svg?style=flat-square)](https://npmjs.com/package/@nextapps-be%2Flivewire-sortablejs)
-[![NPM total downloads](https://img.shields.io/npm/dt/@nextapps-be%2Flivewire-sortablejs.svg?style=flat-square)](https://www.npmjs.com/package/@nextapps-be%2Flivewire-sortablejs)
-[![NPM downloads per month](https://img.shields.io/npm/dm/@nextapps-be%2Flivewire-sortablejs.svg?style=flat-square)](https://www.npmjs.com/package/@nextapps-be%2Flivewire-sortablejs)
+[![Latest Version on NPM](https://img.shields.io/npm/v/@wotz%2Flivewire-sortablejs.svg?style=flat-square)](https://npmjs.com/package/@wotz%2Flivewire-sortablejs)
+[![NPM total downloads](https://img.shields.io/npm/dt/@wotz%2Flivewire-sortablejs.svg?style=flat-square)](https://www.npmjs.com/package/@wotz%2Flivewire-sortablejs)
+[![NPM downloads per month](https://img.shields.io/npm/dm/@wotz%2Flivewire-sortablejs.svg?style=flat-square)](https://www.npmjs.com/package/@wotz%2Flivewire-sortablejs)
 
 A plugin/wrapper around [Sortable.js](https://github.com/SortableJS/Sortable) package.
 
@@ -19,7 +19,7 @@ The `livewire-sortable` package uses Shopify's sortable package. We noticed some
 ### CDN
 
 ```html
-<script src="https://unpkg.com/@nextapps-be/livewire-sortablejs@0.4.0/dist/livewire-sortable.js"></script>
+<script src="https://unpkg.com/@wotz/livewire-sortablejs@0.4.0/dist/livewire-sortable.js"></script>
 ```
 
 > If you use Livewire v2, you need to use v0.2.
@@ -27,17 +27,17 @@ The `livewire-sortable` package uses Shopify's sortable package. We noticed some
 ### NPM
 
 ```bash
-npm install @nextapps-be/livewire-sortablejs --save-dev
+npm install @wotz/livewire-sortablejs --save-dev
 ```
 
 Import the package in your bundle:
 
 ```js
-import '@nextapps-be/livewire-sortablejs';
+import '@wotz/livewire-sortablejs';
 
 // or
 
-require('@nextapps-be/livewire-sortablejs');
+require('@wotz/livewire-sortablejs');
 ```
 
 ## Usage
