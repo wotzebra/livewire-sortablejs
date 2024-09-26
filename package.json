@@ -1,14 +1,14 @@
 {
-    "name": "@nextapps-be/livewire-sortablejs",
+    "name": "@wotz/livewire-sortablejs",
     "version": "0.4.1",
     "description": "Laravel Livewire plugin to use Sortable.js",
     "main": "dist/livewire-sortable.js",
     "author": "Günther Debrauwer",
     "license": "MIT",
-    "homepage": "https://github.com/nextapps-be/livewire-sortablejs",
+    "homepage": "https://github.com/wotzebra/livewire-sortablejs",
     "repository": {
         "type": "git",
-        "url": "https://github.com/nextapps-be/livewire-sortablejs"
+        "url": "https://github.com/wotzebra/livewire-sortablejs"
     },
     "dependencies": {
         "sortablejs": "^1.15.1"
