@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-sortablejs` will be documented in this file.
 
+## 1.0.1 - 2024-10-12
+
+- Update sortablejs from v1.15.1 to v1.15.3
+
 ## 1.0.0 - 2024-09-26
 
 - Change npm package organization name from 'nextapps-be' to 'wotz' (https://github.com/wotzebra/livewire-sortablejs/pull/55)
